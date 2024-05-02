@@ -29,13 +29,16 @@ jobs:
         run: |
           aws sts get-caller-identity
 
-      - name: Terraform Init
-        uses: hashicorp/terraform-github-actions/init@v0.4.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TF_ACTION_WORKING_DIR: '.'
-          AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - uses: hashicorp/setup-terraform@v3
+
+      - run: terraform init
+      
+      - id: plan
+        run: terraform plan -no-color
+      
+      - run: echo ${{ steps.plan.outputs.stdout }}
+      - run: echo ${{ steps.plan.outputs.stderr }}
+      - run: echo ${{ steps.plan.outputs.exitcode }}
 
 
       - name: Terraform Validate
