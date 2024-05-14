@@ -1,6 +1,5 @@
 # AWS RDS Posgres by Terraform
 
-[![Terraform](https://github.com/fabianogoes/fiap-tech-challenge-rds-postgres-terraform/actions/workflows/terraform.yml/badge.svg)](https://github.com/fabianogoes/fiap-tech-challenge-rds-postgres-terraform/actions/workflows/terraform.yml)
 
 - [ ] Iniciar AWS Academy
 - [ ] Atualizar aws cli credentials
